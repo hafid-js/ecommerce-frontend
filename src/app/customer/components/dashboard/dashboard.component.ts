@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AdminService } from 'src/app/admin/service/admin.service';
 import { CustomerService } from '../../services/customer.service';
 
 @Component({
@@ -49,6 +48,8 @@ export class DashboardComponent {
   }
 
   addToCart(id:any) {
-
+    this.customerService.addToCart(id).subscribe(res => {
+      this.snackBar.open("Product added to cart successfully!", "Close", {duration: 5000})
+    })
   }
 }
